@@ -25,7 +25,22 @@ RUN mkdir -p ~/catkin_ws/src \
     && source /opt/ros/kinetic/setup.bash \
     && catkin_make
 
-RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc \
-    && echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
+#RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc \
+#    && echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
 
-WORKDIR /root/catkin_ws
+#WORKDIR /root/catkin_ws
+
+
+
+ARG USERNAME
+ARG USER_UID
+ARG USER_GID
+
+# Create a non-root user
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME --no-log-init \
+    # Add sudo support for the non-root user
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/user\
+    && chmod 0440 /etc/sudoers.d/user
+

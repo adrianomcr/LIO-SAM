@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  liosam:
+    user: $USER
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+      args:
+        #IMAGE: registry.gitlab.com/near-earth/inspection/core-inspection-portfolio/localization_evaluation/localization_evaluation:latest
+        # IMAGE: localization_evaluation_loceval:latest
+        USERNAME: ${USER}
+        USER_UID: ${USER_UID}
+        USER_GID: ${USER_GID}
+    network_mode: host
+    working_dir: /workspace/liosam_ws
+    volumes:
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - ../../:/workspace/liosam_ws
+      # SSH directory to enable git usage
+      # - $HOME/.ssh:/home/${USER}/.ssh
+      # mount data directory
+      #- $HOME/loceval-data:/loceval-data
+      # mount data directory
+      # - $HOME/bags-data:/bags-data
+      # - $HOME/nas:/bags-data
+      # - $HOME/bags:/bags-data
+      #- /media/adriano.rezende/Samsung_T52/PHX0037/:/bags-data
+      # - /media/adriano.rezende/5EAC3256AC322943/ACI0151_AD/data:/bags-data
+      # - /home/NEA.com/adriano.rezende/bags/ACI0151_AD:/bags-data
+      # - /home/NEA.com/adriano.rezende/bags/ACI0130:/bags-data
+      # - /media/adriano.rezende/Samsung_T52/CART009/:/bags-data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      # Needed for display
+      # To allow x windows to show up in the dev dontainer
+      # Add the folowing on .bashrc: xhost +local:docker
+      DISPLAY: $DISPLAY
