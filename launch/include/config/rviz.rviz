@@ -179,7 +179,7 @@ Visualization Manager:
       Name: Odometry
     - Class: rviz/Group
       Displays:
-        - Alpha: 0.30000001192092896
+        - Alpha: 0.10000000149011612
           Autocompute Intensity Bounds: false
           Autocompute Value Bounds:
             Max Value: 10
@@ -304,8 +304,8 @@ Visualization Manager:
         - Alpha: 0.5
           Autocompute Intensity Bounds: false
           Autocompute Value Bounds:
-            Max Value: 11.647583961486816
-            Min Value: -1.4008227586746216
+            Max Value: 11.194022178649902
+            Min Value: -0.9315683841705322
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -468,8 +468,7 @@ Visualization Manager:
           Marker Topic: /lio_sam/mapping/loop_closure_constraints
           Name: Loop constraint
           Namespaces:
-            loop_edges: true
-            loop_nodes: true
+            {}
           Queue Size: 100
           Value: true
       Enabled: true
@@ -490,7 +489,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 36.934288024902344
+      Distance: 51.31998062133789
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -506,9 +505,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5203988552093506
+      Pitch: 0.47039926052093506
       Target Frame: base_link
-      Yaw: 3.2366600036621094
+      Yaw: 3.754836320877075
     Saved: ~
 Window Geometry:
   Displays:
